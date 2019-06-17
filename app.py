@@ -1,4 +1,5 @@
 import dash
+import os
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -16,6 +17,8 @@ import pandas as pd
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+
+server = app.server
 
 df = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2014_world_gdp_with_codes.csv')
 
@@ -431,7 +434,6 @@ names = ['below 3.20$', 'Below 5.20$(total)', 'Below 1.90$']
 traces = []
 
 for i in range(0, 3):
-    print("hello")
     traces.append(go.Scatter(
         x=x_data[i],
         y=y_data[i],
